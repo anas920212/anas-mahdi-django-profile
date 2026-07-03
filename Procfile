@@ -1,0 +1,1 @@
+web: gunicorn anasmahdi_portfolio.wsgi
