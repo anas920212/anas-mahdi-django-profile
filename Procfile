@@ -1,1 +1,1 @@
-web: gunicorn anasmahdi_portfolio.wsgi
+web: gunicorn anasmahdi_portfolio.wsgigit branch -M main
