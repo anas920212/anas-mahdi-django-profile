@@ -1,10 +1,36 @@
+{% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Anas Mahdi Portfolio</title>
+    <link rel="stylesheet" href="{% static 'webpage/css/styles.css' %}">
 </head>
 <body>
-    <h1>Welcome to my Portfolio</h1>
-    <p>This is my professional space.</p>
+
+    <div class="wrapper">
+        <aside class="sidebar">
+            <div class="profile-info">
+                <div class="profile-img-wrapper">
+                    <img src="{% static 'webpage/images/passport_pic.jpg' %}" alt="Profile" class="profile-img">
+                </div>
+                <h1>Anas Mahdi</h1>
+                <h2>Information Systems</h2>
+            </div>
+            
+            <nav class="nav-links">
+                <a href="#">About</a>
+                <a href="#">Projects</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <section>
+                <h3>About Me</h3>
+                <p class="about-text">Welcome to my professional space. As a Master of Social Sciences in Information Systems, I build...</p>
+            </section>
+        </main>
+    </div>
+
 </body>
 </html>

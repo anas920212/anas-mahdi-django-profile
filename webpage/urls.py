@@ -1,13 +1,12 @@
 from django.urls import path
-from django.conf import settings
-from django.conf.urls.static import static
 from . import views
 
-urlpatterns = [
-    path('', views.home, name='home'), 
-    path('chat/', views.chat_response_view, name='chat_response'),
-]
+app_name = 'webpage'
 
-# This block allows Django to serve your CSS/JS/Images in production
-if not settings.DEBUG:
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns = [
+    path('', views.home, name='home'),
+    path('about/', views.about, name='about'),
+    path('index/', views.index, name='index'),
+    path('chat/', views.chat_response_view, name='chat'),
+    path('contact/', views.contact_form_view, name='contact'),
+]

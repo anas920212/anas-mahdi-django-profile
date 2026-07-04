@@ -10,6 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+from dotenv import load_dotenv
+load_dotenv()
+import os
+from pathlib import Path
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -23,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-*$+j+d-)_t&3h%mqh-+=z+vbccmheoya59-gw6&ogb06#kfif*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -37,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
     'webpage',  # 🚀 Added your custom portfolio app here
 ]
 
@@ -120,16 +123,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-import os
-from pathlib import Path
+
 
 # Ensure BASE_DIR is defined at the top, but we can safely use Path here too
 STATIC_URL = '/static/'
 
+
 # This tells Django exactly where to collect static files from
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'webpage', 'static'),
-]
+         BASE_DIR/ "webpage" / "static",
+ ]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
@@ -138,7 +141,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-import os
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
