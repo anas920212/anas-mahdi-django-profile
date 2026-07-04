@@ -79,12 +79,8 @@ WSGI_APPLICATION = 'myportfolio.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'portfolio_db',       # ⚠️ Make sure you create this empty DB schema in MySQL Workbench/Terminal first!
-        'USER': 'root',               # Your MySQL username (usually root)
-        'PASSWORD': 'anasmahdi',  # ⚠️ Replace this with your actual local MySQL password
-        'HOST': '127.0.0.1',          # Localhost path
-        'PORT': '3306',               # Default MySQL port
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
