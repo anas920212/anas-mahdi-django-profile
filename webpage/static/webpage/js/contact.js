@@ -42,8 +42,9 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(response => response.json())
             .then(result => {
                 if (result.success) {
-                    statusMsg.textContent = 'Message sent successfully!';
+                    statusMsg.textContent = '';
                     form.reset();
+                    document.getElementById('thankyou-overlay').classList.add('active');
                 } else {
                     statusMsg.textContent = 'Something went wrong. Please try again.';
                 }
@@ -55,3 +56,20 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
+
+        // Thank you popup close button
+        const thankyouOverlay = document.getElementById('thankyou-overlay');
+        const thankyouCloseBtn = document.getElementById('thankyou-close-btn');
+
+        if (thankyouCloseBtn && thankyouOverlay) {
+            thankyouCloseBtn.addEventListener('click', function () {
+                thankyouOverlay.classList.remove('active');
+            });
+
+            // Click outside popup to close
+            thankyouOverlay.addEventListener('click', function (e) {
+                if (e.target === thankyouOverlay) {
+                    thankyouOverlay.classList.remove('active');
+                }
+            });
+        }

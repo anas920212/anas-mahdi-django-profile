@@ -235,6 +235,16 @@
         </div>
     </div>
 
+        <!-- Thank You Popup -->
+    <div class="thankyou-overlay" id="thankyou-overlay">
+        <div class="thankyou-popup">
+            <div class="thankyou-icon">✓</div>
+            <h3>Thank you for reaching me out!</h3>
+            <p>I will contact you soon!</p>
+            <button id="thankyou-close-btn">Close</button>
+        </div>
+    </div>
+
     {% csrf_token %}
     <script src="{% static 'webpage/js/chat.js' %}"></script>
     <script src="{% static 'webpage/js/contact.js' %}"></script>
