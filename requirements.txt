@@ -8,3 +8,4 @@ asgiref==3.11.1
 requests==2.34.2
 pymysql==1.2.0
 
+whitenoise==6.8.2
