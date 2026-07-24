@@ -3,6 +3,8 @@ import json
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import ensure_csrf_cookie
+from django.core.mail import send_mail
+from django.conf import settings
 from google import genai
 
 client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
@@ -57,8 +59,6 @@ def index(request):
 def about(request):
     return render(request, 'webpage/about.html')
 
-from django.core.mail import send_mail
-from django.conf import settings
 
 def contact_form_view(request):
     if request.method == 'POST':
@@ -70,15 +70,26 @@ def contact_form_view(request):
             country = data.get('country', '')
             message = data.get('message', '')
 
-            # আপাতত শুধু console-এ print করছি (email পাঠানোর সেটআপ পরে করব)
-            print(f"""
-            New Contact Form Submission:
-            Name: {name}
-            Email: {email}
-            Contact: {contact_number}
-            Country: {country}
-            Message: {message}
-            """)
+            email_subject = f"New Portfolio Contact from {name}"
+            email_body = f"""
+New Contact Form Submission:
+
+Name: {name}
+Email: {email}
+Contact Number: {contact_number}
+Country: {country}
+
+Message:
+{message}
+"""
+
+            send_mail(
+                subject=email_subject,
+                message=email_body,
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[settings.CONTACT_RECEIVER_EMAIL],
+                fail_silently=False,
+            )
 
             return JsonResponse({'success': True})
 
